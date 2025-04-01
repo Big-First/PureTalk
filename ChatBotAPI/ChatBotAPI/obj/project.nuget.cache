@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V3gQdYWbT0M=",
+  "dgSpecHash": "R925w/f1/7I=",
   "success": true,
-  "projectFilePath": "J:\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj",
+  "projectFilePath": "J:\\PureTalk\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.13\\microsoft.aspnetcore.openapi.8.0.13.nupkg.sha512",
     "C:\\Users\\MPLopes\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

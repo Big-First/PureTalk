@@ -45,14 +45,14 @@ public class ChatBotService
         foreach (var item in inputMetadata.OrderBy(kvp => kvp.Key))
         {
              string shapeStr = item.Value.Dimensions != null ? string.Join(",", item.Value.Dimensions.Select(d => d.ToString())) : "N/A";
-             Console.WriteLine($"Input Name: {item.Key,-25} | Type: {item.Value.OnnxValueType,-18} | ElementType: {item.Value.ElementDataType,-10} | Shape: [{shapeStr}]");
+             //Console.WriteLine($"Input Name: {item.Key,-25} | Type: {item.Value.OnnxValueType,-18} | ElementType: {item.Value.ElementDataType,-10} | Shape: [{shapeStr}]");
         }
         Console.WriteLine("--- Output Metadata ---");
         var outputMetadata = _session.OutputMetadata;
         foreach (var item in outputMetadata.OrderBy(kvp => kvp.Key))
         {
              string shapeStr = item.Value.Dimensions != null ? string.Join(",", item.Value.Dimensions.Select(d => d.ToString())) : "N/A";
-             Console.WriteLine($"Output Name: {item.Key,-25} | Type: {item.Value.OnnxValueType,-18} | ElementType: {item.Value.ElementDataType,-10} | Shape: [{shapeStr}]");
+             //Console.WriteLine($"Output Name: {item.Key,-25} | Type: {item.Value.OnnxValueType,-18} | ElementType: {item.Value.ElementDataType,-10} | Shape: [{shapeStr}]");
         }
         Console.WriteLine("----------------------");
     }
@@ -83,12 +83,22 @@ public class ChatBotService
         {
             using (Process process = Process.Start(start)!)
             {
-                string output = process.StandardOutput.ReadToEnd(); string errors = process.StandardError.ReadToEnd();
+                string output = process.StandardOutput.ReadToEnd();
+                string errors = process.StandardError.ReadToEnd();
                 process.WaitForExit();
-                if (process.ExitCode != 0 || !string.IsNullOrEmpty(errors)) { Console.WriteLine($"Erro script Python (Exit={process.ExitCode}): {errors}"); return null; }
+                if (process.ExitCode != 0 || !string.IsNullOrEmpty(errors))
+                {
+                    Console.WriteLine($"Erro script Python (Exit={process.ExitCode}): {errors}");
+                    return null;
+                }
+
                 return output.Trim();
             }
-        } catch (Exception ex) { Console.WriteLine($"Falha executar Python: {ex}"); return null; }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Falha executar Python: {ex}"); return null;
+        }
     }
 
     // --- CREATETENSOR/NORMALIZE --- (Sem alterações)
@@ -102,8 +112,14 @@ public class ChatBotService
             try { Buffer.BlockCopy(data, 0, typedData, 0, Buffer.ByteLength(data)); }
             catch (Exception ex) { Console.WriteLine($"Erro conv. tensor tipo {typeof(T)}: {ex.Message}"); throw; }
         }
-        try { return new DenseTensor<T>(typedData, dimensions); }
-        catch (Exception ex) { Console.WriteLine($"Erro criar DenseTensor<{typeof(T)}> shape [{string.Join(",", dimensions.ToArray())}] data len {typedData.Length}: {ex}"); throw; }
+        try
+        {
+            return new DenseTensor<T>(typedData, dimensions);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro criar DenseTensor<{typeof(T)}> shape [{string.Join(",", dimensions.ToArray())}] data len {typedData.Length}: {ex}"); throw;
+        }
     }
     private static List<long> NormalizeInput(List<long> tokens, int targetLength)
     {

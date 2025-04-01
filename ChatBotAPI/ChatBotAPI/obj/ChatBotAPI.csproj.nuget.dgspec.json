@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "J:\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj": {}
+    "J:\\PureTalk\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj": {}
   },
   "projects": {
-    "J:\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj": {
+    "J:\\PureTalk\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "J:\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj",
+        "projectUniqueName": "J:\\PureTalk\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj",
         "projectName": "ChatBotAPI",
-        "projectPath": "J:\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj",
+        "projectPath": "J:\\PureTalk\\ChatBotAPI\\ChatBotAPI\\ChatBotAPI.csproj",
         "packagesPath": "C:\\Users\\MPLopes\\.nuget\\packages\\",
-        "outputPath": "J:\\ChatBotAPI\\ChatBotAPI\\obj\\",
+        "outputPath": "J:\\PureTalk\\ChatBotAPI\\ChatBotAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "H:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
