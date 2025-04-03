@@ -1,8 +1,9 @@
-﻿using MongoDB.Driver;
-using PuretalkApplication.Data;
+﻿using Data;
+using Models;
+using MongoDB.Driver;
 using PuretalkApplication.Models;
 
-namespace PuretalkApplication.Repositorys;
+namespace PureTalk.Profile.Repositorys;
 
 public class ApplicationRepository
 {
@@ -12,7 +13,7 @@ public class ApplicationRepository
 
     public async Task<object?> GetObject(DBContext _DbMongo, string Id)
     {
-        var collection = _DbMongo.GetDatabase().GetCollection<UserRegister>("UserRegister");
+        var collection = _DbMongo.GetDatabase().GetCollection<UserRegister>("UserProfile");
 
         // Create a filter to find the document by Id
         var filter = Builders<UserRegister>.Filter.Eq(u => u.id, Id);
@@ -23,9 +24,9 @@ public class ApplicationRepository
         return wallet as UserRegister;
     }
 
-    public async Task<object?> InsetObject(DBContext _DbMongo, UserRegister _object, CancellationToken cancellationToken)
+    public async Task<object?> InsetObject(DBContext _DbMongo, UserProfile _object, CancellationToken cancellationToken)
     {
-        var collection = _DbMongo.GetDatabase().GetCollection<UserRegister>("UserRegister");
+        var collection = _DbMongo.GetDatabase().GetCollection<UserProfile>("UserProfile");
         collection.InsertOne(_object);
         return _object;
     }

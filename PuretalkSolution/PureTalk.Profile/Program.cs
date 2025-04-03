@@ -36,4 +36,4 @@ app.MapPost("/Profile",async ([FromBody] UserProfile _user) =>
     return server.AddUser(_user);
 });
 
-app.Run("http://0.0.0.0:5000");
+app.Run("http://0.0.0.0:5500");

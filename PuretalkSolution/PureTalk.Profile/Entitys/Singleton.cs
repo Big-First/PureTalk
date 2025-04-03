@@ -1,4 +1,4 @@
-﻿namespace PureTalk.Profile.Entitys;
+﻿namespace Entitys;
 
 public class Singleton
 {
