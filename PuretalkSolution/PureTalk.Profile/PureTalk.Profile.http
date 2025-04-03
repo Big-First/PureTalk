@@ -1,0 +1,6 @@
+@PureTalk.Profile_HostAddress = http://localhost:5031
+
+GET {{PureTalk.Profile_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

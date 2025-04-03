@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuretalkApplication", "PuretalkApplication\PuretalkApplication.csproj", "{DCC83B50-669C-403C-AF59-A36BA5B9A13A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PureTalk.Profile", "PureTalk.Profile\PureTalk.Profile.csproj", "{3C12D7F1-51A0-4A5B-AE28-8E739D0B22E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCC83B50-669C-403C-AF59-A36BA5B9A13A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC83B50-669C-403C-AF59-A36BA5B9A13A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC83B50-669C-403C-AF59-A36BA5B9A13A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC83B50-669C-403C-AF59-A36BA5B9A13A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C12D7F1-51A0-4A5B-AE28-8E739D0B22E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C12D7F1-51A0-4A5B-AE28-8E739D0B22E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C12D7F1-51A0-4A5B-AE28-8E739D0B22E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C12D7F1-51A0-4A5B-AE28-8E739D0B22E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

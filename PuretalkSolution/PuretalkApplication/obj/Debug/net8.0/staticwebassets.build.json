@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "pmi4GtCfeGNP1uiA4Y7/vMvbCxKbAEq9nDzacLONzms=",
+  "Source": "PuretalkApplication",
+  "BasePath": "_content/PuretalkApplication",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
