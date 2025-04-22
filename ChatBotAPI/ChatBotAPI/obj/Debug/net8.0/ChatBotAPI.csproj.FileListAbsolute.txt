@@ -113,3 +113,4 @@ J:\PureTalk\ChatBotAPI\ChatBotAPI\obj\Debug\net8.0\refint\ChatBotAPI.dll
 J:\PureTalk\ChatBotAPI\ChatBotAPI\obj\Debug\net8.0\ChatBotAPI.pdb
 J:\PureTalk\ChatBotAPI\ChatBotAPI\obj\Debug\net8.0\ChatBotAPI.genruntimeconfig.cache
 J:\PureTalk\ChatBotAPI\ChatBotAPI\obj\Debug\net8.0\ref\ChatBotAPI.dll
+J:\PureTalk\ChatBotAPI\ChatBotAPI\bin\Debug\net8.0\Vocabularys\model_tree.json

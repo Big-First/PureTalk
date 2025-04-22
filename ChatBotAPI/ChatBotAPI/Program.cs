@@ -1,57 +1,45 @@
-using System.Net.WebSockets;
-using System.Text;
 using ChatBotAPI.Core;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddSingleton<ChatBotService>();
+
 var app = builder.Build();
 
 app.UseWebSockets();
-app.Map("/chat", async (HttpContext context) =>
+
+app.Map("/chat", async context =>
 {
-    if (!context.WebSockets.IsWebSocketRequest)
+    if (context.WebSockets.IsWebSocketRequest)
+    {
+        using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+        var chatService = context.RequestServices.GetRequiredService<ChatBotService>();
+        await HandleWebSocketAsync(webSocket, chatService, context.RequestAborted);
+    }
+    else
     {
         context.Response.StatusCode = 400;
-        return;
     }
-
-    using var webSocket = await context.WebSockets.AcceptWebSocketAsync();
-    var chatService = context.RequestServices.GetRequiredService<ChatBotService>();
-    await ChatHandler(webSocket, chatService);
 });
 
 app.Run();
 
-async Task ChatHandler(WebSocket webSocket, ChatBotService chatService)
+async Task HandleWebSocketAsync(System.Net.WebSockets.WebSocket webSocket, ChatBotService chatService, CancellationToken cancellationToken)
 {
-    var buffer = new byte[4096];
-
-    while (webSocket.State == WebSocketState.Open)
+    var buffer = new byte[1024 * 4];
+    while (webSocket.State == System.Net.WebSockets.WebSocketState.Open)
     {
-        var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-
-        if (result.MessageType == WebSocketMessageType.Close)
+        var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), cancellationToken);
+        if (result.MessageType == System.Net.WebSockets.WebSocketMessageType.Text)
         {
-            await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Conexão fechada", CancellationToken.None);
-            return;
+            string input = System.Text.Encoding.UTF8.GetString(buffer, 0, result.Count);
+            string response = chatService.GetResponse(input);
+            byte[] responseBytes = System.Text.Encoding.UTF8.GetBytes(response);
+            await webSocket.SendAsync(new ArraySegment<byte>(responseBytes), System.Net.WebSockets.WebSocketMessageType.Text, true, cancellationToken);
         }
-
-        if (result.MessageType == WebSocketMessageType.Text)
+        else if (result.MessageType == System.Net.WebSockets.WebSocketMessageType.Close)
         {
-            var receivedMessage = Encoding.UTF8.GetString(buffer, 0, result.Count);
-            string responseMessage;
-            try
-            {
-                responseMessage = chatService.GetResponse(receivedMessage);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Erro ao gerar resposta: {ex}");
-                responseMessage = "Ocorreu um erro ao processar a mensagem.";
-            }
-
-            var responseBytes = Encoding.UTF8.GetBytes(responseMessage);
-            await webSocket.SendAsync(new ArraySegment<byte>(responseBytes), WebSocketMessageType.Text, true, CancellationToken.None);
+            await webSocket.CloseAsync(System.Net.WebSockets.WebSocketCloseStatus.NormalClosure, "Closing", cancellationToken);
         }
     }
 }

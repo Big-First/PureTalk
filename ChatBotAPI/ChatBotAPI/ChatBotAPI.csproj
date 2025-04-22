@@ -20,7 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ONN" />
+      <Folder Include="Brains\" />
+      <Folder Include="Tensors\" />
     </ItemGroup>
+    
 
 </Project>

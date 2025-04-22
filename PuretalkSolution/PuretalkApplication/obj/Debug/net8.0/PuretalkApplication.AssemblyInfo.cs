@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PuretalkApplication")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17f249aaa63eaaade15acacab8f880890595d54e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d6b48a2e3eb5ae015e90115f44e8ec595a39076")]
 [assembly: System.Reflection.AssemblyProductAttribute("PuretalkApplication")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PuretalkApplication")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
